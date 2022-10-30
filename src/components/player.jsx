@@ -3,6 +3,7 @@ import Cards from "./cards";
 import { useSearchParams } from "react-router-dom";
 import axios from "axios";
 import ActionForm from "./actionForm";
+import Mat from "./mat";
 function Players() {
   const [actions, setActions] = useState();
   const [playerName, setPlayerName] = useState();
@@ -12,6 +13,7 @@ function Players() {
           .then(response => {
             console.log()
             setActions(response.data.actions)
+            console.log(actions)
             setPlayerName(response.data.playerName)
           });
       }, []);
@@ -25,7 +27,9 @@ function Players() {
       <div className="row">{playerName}</div>
       <div className="row">{actions}</div>
       <Cards onCardChange={handleCardChange} id={searchParams.get("id")} />
-      <ActionForm id={selectedCardId}/>
+     {actions!==undefined? <ActionForm id={selectedCardId} purpose={actions} playerId={searchParams.get("id")}/>:<div/>}
+     <div className="row">Mat Cards:</div>
+     <div className="row"><Mat/></div>
     </div>
   );
 }

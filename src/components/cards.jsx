@@ -20,6 +20,7 @@ class Cards extends Component {
   }
   render() {
     const rows = [];
+    if(this.state.response!=null)
     for (let i = 0; i < this.state.response.length; i++) {
       var card = this.state.response[i];
       rows.push(
@@ -33,7 +34,7 @@ class Cards extends Component {
         />
       );
     }
-    return <div className="row bg-info bg-gradient">{rows}</div>;
+    return <div>{rows}</div>;
   }
 }
 

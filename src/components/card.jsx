@@ -6,7 +6,7 @@ class Card extends Component {
   }
   render() {
     return (
-      <label className="col border rounded " htmlFor={this.props.id}>
+      <label className="col-sm-2 border rounded " htmlFor={this.props.id}>
         <div className="" style={{ color: this.props.color }}>
           <div>{this.props.cardValue}</div>
           <div>
