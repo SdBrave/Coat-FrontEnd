@@ -1,16 +1,25 @@
 import * as React from "react";
 import { Component } from "react";
 class Card extends Component {
-  
   render() {
     return (
-      <div className="col" style={{color:this.props.color}}>
-        <h2>{this.props.cardValue}&nbsp;</h2>
-        <h3>{this.props.suit} {this.props.suit}</h3>
-        <h3>{this.props.suit} {this.props.suit}</h3>
-        
-        <h2>&nbsp;{this.props.cardValue}</h2>
-      </div>
+      <label className="col border rounded " htmlFor={this.props.id}>
+        <div className="bg-info bg-gradient" style={{ color: this.props.color }}>
+          <div>{this.props.cardValue}</div>
+          <div>
+            {this.props.suit}
+            {this.props.suit}
+          </div>
+          <div>
+            {this.props.suit}
+            {this.props.suit}
+          </div>
+          <div>
+            <div>{this.props.cardValue}</div>
+          </div>
+        </div>
+        <input id={this.props.id} name="selectedCard" type={"radio"} />
+      </label>
     );
   }
 }

@@ -21,6 +21,7 @@ class Cards extends Component {
       rows.push(
         <Card
           key={i}
+          id={card.id}
           cardValue={card.card_value}
           color={card.color}
           suit={card.suit}
