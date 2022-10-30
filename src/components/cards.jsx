@@ -14,12 +14,17 @@ class Cards extends Component {
       this.setState({ response: result });
     });
   }
+  handleCardChange=(target)=>{
+    console.log("Not again",target)
+    this.props.onCardChange(target)
+  }
   render() {
     const rows = [];
     for (let i = 0; i < this.state.response.length; i++) {
       var card = this.state.response[i];
       rows.push(
         <Card
+          onSelectedCardChange={this.handleCardChange}
           key={i}
           id={card.id}
           cardValue={card.card_value}
@@ -28,7 +33,7 @@ class Cards extends Component {
         />
       );
     }
-    return <div className="row">{rows}</div>;
+    return <div className="row bg-info bg-gradient">{rows}</div>;
   }
 }
 

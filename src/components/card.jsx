@@ -1,10 +1,13 @@
 import * as React from "react";
 import { Component } from "react";
 class Card extends Component {
+  handleCardChange=(e)=>{
+    this.props.onSelectedCardChange(e.target);
+  }
   render() {
     return (
       <label className="col border rounded " htmlFor={this.props.id}>
-        <div className="bg-info bg-gradient" style={{ color: this.props.color }}>
+        <div className="" style={{ color: this.props.color }}>
           <div>{this.props.cardValue}</div>
           <div>
             {this.props.suit}
@@ -18,7 +21,7 @@ class Card extends Component {
             <div>{this.props.cardValue}</div>
           </div>
         </div>
-        <input id={this.props.id} name="selectedCard" type={"radio"} />
+        <input id={this.props.id} onChange={this.handleCardChange} name="selectedCard" type={"radio"} />
       </label>
     );
   }
