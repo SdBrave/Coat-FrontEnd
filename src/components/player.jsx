@@ -6,7 +6,7 @@ import ActionForm from "./actionForm";
 function Players() {
   const [actions, setActions] = useState();
   const [playerName, setPlayerName] = useState();
-  const [selectedCardId, setSelectedCardId] = useState(0);
+  const [selectedCardId, setSelectedCardId] = useState("");
     React.useEffect(() => {
         axios.get(`http://127.0.0.1:8000/coatgame/get_player_actions?id=${searchParams.get("id")}`)
           .then(response => {
