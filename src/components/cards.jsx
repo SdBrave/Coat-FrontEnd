@@ -27,7 +27,7 @@ class Cards extends Component {
         />
       );
     }
-    return <div>{rows}</div>;
+    return <div className="row">{rows}</div>;
   }
 }
 
