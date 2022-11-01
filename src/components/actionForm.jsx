@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { Component } from "react";
 class ActionForm extends Component {
-  state = { showForm: true, formError: false };
+  state = { showForm: true, formError: false,errorMessage:"" };
   handleSubmit = (e) => {
     if (this.props.id != "") {
       this.setState({ formError: false });
@@ -15,9 +15,15 @@ class ActionForm extends Component {
           if (response.status == 200) {
             this.setState({ showForm: false });
           }
-        });
+          
+        }).catch((response)=>{
+            console.log(response.response.data)
+            this.setState({ formError: true });
+            this.setState({errorMessage:response.response.data})
+          });
     } else {
       this.setState({ formError: true });
+      this.setState({errorMessage:"please select card"})
     }
     console.log(e);
     e.preventDefault();
@@ -42,7 +48,7 @@ class ActionForm extends Component {
           ></input>
           <input type="submit" value="Submit" />
           {this.state.formError === true ? (
-            <div className="danger">Please select card</div>
+            <div className="danger">{this.state.errorMessage}</div>
           ) : (
             <div></div>
           )}

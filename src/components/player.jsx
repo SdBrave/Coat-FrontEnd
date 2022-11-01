@@ -8,12 +8,13 @@ function Players() {
   const [actions, setActions] = useState();
   const [playerName, setPlayerName] = useState();
   const [selectedCardId, setSelectedCardId] = useState("");
+  const [trumpSuit,setTrumpSuit]=useState();
     React.useEffect(() => {
         axios.get(`http://127.0.0.1:8000/coatgame/get_player_actions?id=${searchParams.get("id")}`)
           .then(response => {
             console.log()
             setActions(response.data.actions)
-            console.log(actions)
+            setTrumpSuit(response.data.trump_card)
             setPlayerName(response.data.playerName)
           });
       }, []);
@@ -25,7 +26,7 @@ function Players() {
   return (
     <div className="container">
       <div className="row">{playerName}</div>
-      <div className="row">{actions}</div>
+      <div className="row">{actions}</div><span color={(trumpSuit=="♥" || trumpSuit=="♦")?"red":"black"}>{trumpSuit}</span>
       <Cards onCardChange={handleCardChange} id={searchParams.get("id")} />
      {actions!==undefined? <ActionForm id={selectedCardId} purpose={actions} playerId={searchParams.get("id")}/>:<div/>}
      <div className="row">Mat Cards:</div>
