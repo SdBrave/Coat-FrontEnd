@@ -29,7 +29,7 @@ function Players() {
     <div className="container">
       <div className="row">{playerName}</div>
       <div className="row">points : {points}</div>
-      <div className="row">{actions}</div><span color={(trumpSuit=="♥" || trumpSuit=="♦")?"red":"black"}>{trumpSuit}</span>
+      <div className="row">{actions}</div><div style={{color:(trumpSuit=="♥" || trumpSuit=="♦")?"red":"black"}}>{trumpSuit}</div>
       <Cards onCardChange={handleCardChange} id={searchParams.get("id")} />
      {actions!==undefined? <ActionForm id={selectedCardId} purpose={actions} playerId={searchParams.get("id")}/>:<div/>}
      <div className="row">Mat Cards:</div>
