@@ -3,7 +3,9 @@ import Cards from './cards';
 class Mat extends Component {
     state = {  } 
     render() { 
-        return (<Cards id={"MatCards"} className="container"/>);
+        return (<div><div className='row'>Mat Cards:</div>
+        <Cards length={this.state.length} id={"MatCards"} className="container"/>
+        </div>);
     }
 }
  

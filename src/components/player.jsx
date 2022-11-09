@@ -4,6 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import axios from "axios";
 import ActionForm from "./actionForm";
 import Mat from "./mat";
+import Navbar from "./navbar";
 function Players() {
   const [actions, setActions] = useState();
   const [playerName, setPlayerName] = useState();
@@ -26,14 +27,16 @@ function Players() {
         setSelectedCardId(target.id)
       }
   return (
-    <div className="container">
-      <div className="row">{playerName}</div>
-      <div className="row">points : {points}</div>
-      <div className="row">{actions}</div><div style={{color:(trumpSuit=="♥" || trumpSuit=="♦")?"red":"black"}}>{trumpSuit}</div>
+    <div >
+      <Navbar trumpSuit={trumpSuit} points={points} playerName={playerName} actions={actions}/>
+      <div className="container">
+        <br/>
+        
       <Cards onCardChange={handleCardChange} id={searchParams.get("id")} />
      {actions!==undefined? <ActionForm id={selectedCardId} purpose={actions} playerId={searchParams.get("id")}/>:<div/>}
-     <div className="row">Mat Cards:</div>
+     <br/>
      <div className="row"><Mat/></div>
+     </div>
     </div>
   );
 }

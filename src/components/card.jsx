@@ -1,13 +1,20 @@
 import * as React from "react";
 import { Component } from "react";
 class Card extends Component {
+  state={}
   handleCardChange=(e)=>{
     this.props.onSelectedCardChange(e.target);
   }
+  isCha
+  isInput=()=>{
+if(this.props.isPlayCard){
+ return <input id={this.props.id} onChange={this.handleCardChange} name="selectedCard" type={"radio"} />
+}
+  }
   render() {
     return (
-      <label className="col-sm-2 border rounded " htmlFor={this.props.id}>
-        <div className="" style={{ color: this.props.color }}>
+      <label className="col-sm-1 " htmlFor={this.props.id}>
+        <div className="card medium" style={{ color: this.props.color}}>
           <div>{this.props.cardValue}</div>
           <div>
             {this.props.suit}
@@ -21,7 +28,7 @@ class Card extends Component {
             <div>{this.props.cardValue}</div>
           </div>
         </div>
-        <input id={this.props.id} onChange={this.handleCardChange} name="selectedCard" type={"radio"} />
+       {this.isInput()}
       </label>
     );
   }

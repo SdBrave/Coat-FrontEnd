@@ -31,10 +31,11 @@ class Cards extends Component {
           cardValue={card.card_value}
           color={card.color}
           suit={card.suit}
+          isPlayCard={this.props.id=="MatCards"?false:true}
         />
       );
     }
-    return <div>{rows}</div>;
+    return <div className="row gx-2">{rows}</div>;
   }
 }
 
